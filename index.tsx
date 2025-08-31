@@ -9,6 +9,7 @@ import { showNotification } from "@api/Notifications";
 import { definePluginSettings } from '@api/Settings';
 import { ModalContent, ModalFooter, ModalHeader, ModalRoot, openModal } from "@utils/modal";
 import { Button, Forms, TextArea } from "@webpack/common";
+import { http } from "@api/Http";
 
 let lastHeartbeatAt = 0;
 
@@ -43,43 +44,50 @@ function enoughTimePassed() {
     return lastHeartbeatAt + 120000 < Date.now();
 }
 
-async function sendHeartbeat(time) {
+async function sendHeartbeat(time: number) {
     const key = settings.store.apiKey;
-    if (!key || key === 'AAAAAAAAAAAAA') {
+    if (!key || key === "AAAAAAAAAAAAA") {
         showNotification({
             title: "Hackatime",
             body: "Don't forget to input your Hackatime API key within settings.",
             color: "var(--red-360)",
         });
-
         return;
     }
+
     if (settings.store.debug) {
-        console.log('Sending heartbeat to Hackatime API.');
+        console.log("Sending heartbeat to Hackatime API.");
     }
 
-    const url = 'https://hackatime.hackclub.com/api/hackatime/v1';
-    const body = JSON.stringify({
+    const url = "https://hackatime.hackclub.com/api/hackatime/v1";
+    const body = {
         time: time / 1000,
-        entity: 'Discord',
-        type: 'app',
+        entity: "Discord",
+        type: "app",
         project: settings.store.projectName ?? "Discord",
-        plugin: 'vencord/version discord-hackatime/v0.0.1',
-    });
-    const headers = {
-        Authorization: `Basic ${key}`,
-        'Content-Type': 'application/json',
-        'Content-Length': new TextEncoder().encode(body).length.toString(),
+        plugin: "vencord/version discord-hackatime/v0.0.1",
     };
+
+    const headers: Record<string, string> = {
+        Authorization: `Basic ${key}`,
+        "Content-Type": "application/json",
+    };
+
     const machine = settings.store.machineName;
-    if (machine) headers['X-Machine-Name'] = machine;
-    const response = await fetch(url, {
-        method: 'POST',
-        body: body,
-        headers: headers,
-    });
-    const data = await response.text();
-    if (response.status < 200 || response.status >= 300) console.warn(`Hackatime API Error ${response.status}: ${data}`);
+    if (machine) headers["X-Machine-Name"] = machine;
+
+    try {
+        const response = await http.post(url, {
+            body: JSON.stringify(body),
+            headers,
+        });
+
+        if (response.status < 200 || response.status >= 300) {
+            console.warn(`Hackatime API Error ${response.status}: ${response.body}`);
+        }
+    } catch (err) {
+        console.error("Hackatime request failed:", err);
+    }
 }
 
 async function handleAction() {
@@ -100,7 +108,7 @@ export default definePlugin({
     ],
     settings,
     start() {
-        console.log('Initializing Hackatime plugin');
+        console.log('Initializing Hackatime plugin v');
         this.handler = handleAction.bind(this);
         document.addEventListener('click', this.handler);
     },
