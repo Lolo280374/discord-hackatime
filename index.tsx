@@ -9,9 +9,11 @@ import { showNotification } from "@api/Notifications";
 import { definePluginSettings } from '@api/Settings';
 import { ModalContent, ModalFooter, ModalHeader, ModalRoot, openModal } from "@utils/modal";
 import { Button, Forms, TextArea } from "@webpack/common";
-import { http } from "@api/Http";
+import { getModule } from "@webpack";
 
 let lastHeartbeatAt = 0;
+
+const req = await getModule(["getAPIBaseURL", "get"]);
 
 const settings = definePluginSettings({
     apiKey: {
@@ -44,7 +46,13 @@ function enoughTimePassed() {
     return lastHeartbeatAt + 120000 < Date.now();
 }
 
+let request: any = null;
+
 async function sendHeartbeat(time: number) {
+    if (!request) {
+        request = await getModule(["getAPIBaseURL", "get"]);
+    }
+
     const key = settings.store.apiKey;
     if (!key || key === "AAAAAAAAAAAAA") {
         showNotification({
@@ -77,18 +85,20 @@ async function sendHeartbeat(time: number) {
     if (machine) headers["X-Machine-Name"] = machine;
 
     try {
-        const response = await http.post(url, {
-            body: JSON.stringify(body),
+        const res = await request.post({
+            url,
             headers,
+            body: JSON.stringify(body),
         });
 
-        if (response.status < 200 || response.status >= 300) {
-            console.warn(`Hackatime API Error ${response.status}: ${response.body}`);
+        if (res.status < 200 || res.status >= 300) {
+            console.warn(`Hackatime API Error ${res.status}:`, res.body);
         }
     } catch (err) {
         console.error("Hackatime request failed:", err);
     }
 }
+
 
 async function handleAction() {
     const time = Date.now();
