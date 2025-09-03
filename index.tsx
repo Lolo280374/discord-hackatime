@@ -60,7 +60,7 @@ export default definePlugin({
             type: "app",
             language: "Discord",
             project: projectName ?? "Discord",
-            plugin: "vencord/version discord-hackatime/v0.1",
+            plugin: "DiscordDesktop/Vencord discord-hackatime/v0.1",
         };
         
         // Send as an array (even with just one heartbeat)
