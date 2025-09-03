@@ -1,7 +1,7 @@
 # ⚡ discord-hackatime
 
 <p align="center">
-  <a href="https://raw.githubusercontent.com/Lolo280374/discord-hackatime/refs/heads/main/discord-hackatime/install.bat">
+  <a href="https://github.com/Lolo280374/discord-hackatime/releases">
     <img src="https://github.com/user-attachments/assets/0a9ed8d9-3d44-48f5-893c-2d99515d5ba5" width="500" />
   </a>
   <a href="https://github.com/Lolo280374/discord-hackatime?tab=readme-ov-file#how-can-i-install-this">
