@@ -4,7 +4,7 @@
   <a href="https://raw.githubusercontent.com/Lolo280374/discord-hackatime/refs/heads/main/discord-hackatime/install.bat">
     <img src="https://github.com/user-attachments/assets/0a9ed8d9-3d44-48f5-893c-2d99515d5ba5" width="500" />
   </a>
-  <a href="https://example.com/source-install">
+  <a href="https://github.com/Lolo280374/discord-hackatime?tab=readme-ov-file#how-can-i-install-this">
     <img src="https://github.com/user-attachments/assets/74b3d1de-63ce-478e-8639-736e61861936" width="500" />
   </a>
 </p>
