@@ -34,7 +34,7 @@ export default definePlugin({
     name: "Hackatime",
     description: "Track your Discord usage within Hackatime!",
     authors: [
-        { name: "lolo.zip", id: 547101350450692142 }
+        { name: "lolo.zip", id: 547101350450692142n }
     ],
     settings,
     
