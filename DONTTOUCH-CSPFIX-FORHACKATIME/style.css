@@ -1,0 +1,23 @@
+.cspmanager-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  div[role="button"] > div {
+    cursor: pointer !important;
+  }
+}
+
+.cspmanager-block {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.cspmanager-input {
+  flex: 1;
+}
+
+.cspmanager-select {
+  width: 200px;
+}
