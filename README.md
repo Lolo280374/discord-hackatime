@@ -1,6 +1,6 @@
 # ⚡ discord-hackatime
 
-
+<img width="1385" height="464" alt="dfgdfgdfg" src="https://github.com/user-attachments/assets/045ae21b-d7a0-4793-9d39-4ee4c085afa1" />
 
 **Add Discord statistics within Hackatime!**
 **Project made for the Summer of Making 25, at HackClub!**
