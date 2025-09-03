@@ -48,7 +48,9 @@ Built using TypeScript, to get a project idea for SOM 2025
    ```bash
    pnpm install --no-frozen-lockfile
    ```
-
+   > ⚠️ if that command dosen't run, make sure you have pnpm installed!!
+   > npm install -g pnpm
+   
 4. **Create a user plugins folder** inside Vencord:
 
    ```bash
