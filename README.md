@@ -9,7 +9,6 @@
   </a>
 </p>
 
-NB: The auto-install script is currently only avalaible on Windows-based computers.
 
 <img width="1385" height="464" alt="dfgdfgdfg" src="https://github.com/user-attachments/assets/045ae21b-d7a0-4793-9d39-4ee4c085afa1" />
 
