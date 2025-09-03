@@ -1,7 +1,7 @@
 # ⚡ discord-hackatime
 
 <p align="center">
-  <a href="https://example.com/auto-install">
+  <a href="https://raw.githubusercontent.com/Lolo280374/discord-hackatime/refs/heads/main/discord-hackatime/install.bat">
     <img src="https://github.com/user-attachments/assets/0a9ed8d9-3d44-48f5-893c-2d99515d5ba5" width="500" />
   </a>
   <a href="https://example.com/source-install">
