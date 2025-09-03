@@ -25,14 +25,75 @@ Built using TypeScript, to get a project idea for SOM 2025
 </div>
 
 ## how can I install this
-### Prerequisites
-- Vencord from source (I won't be doing a tutorial for now)
-- pnpm or npm or yarn (i'll be using pnpm)
+### prerequesites
+- Git installed to system environnement (PATH)
+- nodeJS also installed to PATH
 
-### Installation
-Once you have Vencord from source, make a "userplugins" folder within the "src" folder, add the plugin folder there (git clone it)
-<br>then, run "pnpm build", and "pnpm inject", and hit enter if you use the default discord client, otherwise select yours.
-<br>it's installed! you can now configure it from regular plugin settings.
+### installation
+1. **Navigate to your Documents folder**:
+
+   ```bash
+   cd ~/Documents   # or %USERPROFILE%\Documents on Windows
+   ```
+
+2. **Clone the Vencord repository**:
+
+   ```bash
+   git clone https://github.com/Vendicated/Vencord
+   cd Vencord
+   ```
+
+3. **Install dependencies**:
+
+   ```bash
+   pnpm install --no-frozen-lockfile
+   ```
+
+4. **Create a user plugins folder** inside Vencord:
+
+   ```bash
+   mkdir src/userplugins
+   cd src/userplugins
+   ```
+
+5. **Clone this plugin**:
+
+   ```bash
+   git clone https://github.com/Lolo280374/discord-hackatime.git
+   ```
+
+6. **Remove conflicting files** (to avoid build errors):
+
+   ```bash
+   rm -f LICENSE README.md
+   ```
+
+   This command may not work on your operating system! If it dosen't, delete them from your file explorer...
+
+   > ⚠️ Make sure you delete them **inside the `discord-hackatime` plugin folder**,
+   > not in the root of Vencord.
+
+7. **Build Vencord**:
+
+   ```bash
+   cd ../..   # back to Vencord root
+   pnpm build
+   ```
+
+8. **Inject Vencord into Discord**:
+
+   ```bash
+   pnpm inject
+   ```
+
+   * Select your installed Discord client (Stable / PTB / Canary).
+   * Confirm with **Enter**.
+
+---
+
+### 🎉 yay!
+
+you're good to go! check in your plugins settings page for "Hackatime".
 
 ## license
 
